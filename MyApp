@@ -1,0 +1,29 @@
+import java.io.*;
+public class MyApp
+{
+    public static void main(String[] args){
+         try{File f = new File("C:\\Users\\82105\\Desktop\\die Univ\\프로그래밍 응용 2 실습\\실습#3_3팀\\sunmoon.jpg");
+            FileInputStream fis = new FileInputStream(f);
+            BufferedInputStream bi = new BufferedInputStream(fis, 20);
+            
+            File f2 = new File("C:\\Users\\82105\\Desktop\\die Univ\\프로그래밍 응용 2 실습\\실습#3_3팀\\Result\\sunmoon-copy.jpg"); 
+            FileOutputStream fos = new FileOutputStream(f2);
+            BufferedOutputStream bo = new BufferedOutputStream(fos, 20);
+            
+            int a;
+            while((a =bi.read()) != -1){
+                bo.write((byte)a);
+            }
+            fis.close();
+            fos.close();
+            
+            long size_1 = f.length();
+            long size_2 = f2.length();
+
+            System.out.println("입력 파일: " + f.getPath() +"(파일크기 = " + size_1 + "바이트)");
+            System.out.println("출력 파일: " + f2.getPath() +"(파일크기 = " + size_2 + "바이트)" );
+            
+         }
+         catch(IOException e){System.out.println("오류");}
+    } 
+}
